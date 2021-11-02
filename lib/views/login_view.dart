@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_cargo_logistics/views/main_view.dart';
 import 'package:flutter_cargo_logistics/views/register_view.dart';
 import 'package:flutter_cargo_logistics/views/search_transport_view.dart';
 
@@ -102,8 +103,7 @@ class _LoginViewState extends State<LoginView> {
                 margin: EdgeInsets.only(top: 40),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(SearchTransportView.routeName);
+                    Navigator.of(context).pushNamed(MainView.routeName);
                   },
                   child: const Text(
                     "SIGN IN",
