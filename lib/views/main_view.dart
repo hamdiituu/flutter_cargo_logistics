@@ -50,10 +50,10 @@ class _MainViewState extends State<MainView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(iconData),
+                Icon(iconData, size: 30),
                 Text(text,
                     style:
-                        TextStyle(fontSize: 12, color: _getItemColor(index))),
+                        TextStyle(fontSize: 10, color: _getItemColor(index))),
               ],
             ),
             onTap: () => _onItemTapped(index),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_cargo_logistics/widgets/custom/bottom_navigation_bar_custom_widget.dart';
 import 'package:flutter_cargo_logistics/widgets/custom/elevated_button_custom_widget.dart';
 import 'package:flutter_cargo_logistics/widgets/custom/text_field_custom_widget.dart';
 
