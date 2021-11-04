@@ -4,6 +4,9 @@ import 'package:flutter/painting.dart';
 import 'package:flutter_cargo_logistics/views/main_view.dart';
 import 'package:flutter_cargo_logistics/views/register_view.dart';
 import 'package:flutter_cargo_logistics/views/search_transport_view.dart';
+import 'package:flutter_cargo_logistics/widgets/custom/elevated_button_custom_widget.dart';
+import 'package:flutter_cargo_logistics/widgets/custom/outlined_button_custim_widget.dart';
+import 'package:flutter_cargo_logistics/widgets/custom/text_field_icon_custom_widget.dart';
 
 class LoginView extends StatefulWidget {
   static const String routeName = '/';
@@ -18,23 +21,11 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        ShaderMask(
-          shaderCallback: (rect) {
-            return LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.blue.shade100,
-                Colors.blue.shade900,
-              ],
-            ).createShader(Rect.zero);
-          },
-          child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: ExactAssetImage('assets/images/bg_truck.jpeg'),
-                fit: BoxFit.cover,
-              ),
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage('assets/images/bg.png'),
+              fit: BoxFit.cover,
             ),
           ),
         ),
@@ -59,81 +50,33 @@ class _LoginViewState extends State<LoginView> {
                   color: Colors.white,
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(top: 40),
-                height: 50,
-                decoration: const BoxDecoration(
-                    border: Border(bottom: BorderSide(color: Colors.white))),
-                child: const TextField(
-                  cursorColor: Colors.white,
-                  cursorHeight: 13,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      label: Text("Username"),
-                      labelStyle: TextStyle(fontSize: 13, color: Colors.white),
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.white,
-                        size: 20,
-                      ),
-                      border: InputBorder.none),
-                ),
+              const TextFieldIconCustomWidget(
+                icon: Icon(Icons.person, color: Colors.white, size: 24),
+                color: Colors.white,
+                label: 'Username',
+                margin: EdgeInsets.only(bottom: 20, top: 20),
               ),
-              Container(
+              const TextFieldIconCustomWidget(
+                icon: Icon(Icons.lock, color: Colors.white, size: 24),
+                color: Colors.white,
+                label: 'Password',
+                margin: EdgeInsets.only(bottom: 40),
+              ),
+              ElevatedButtonCustomWidget(
+                label: 'SIGN IN',
+                onPressed: () {
+                  Navigator.of(context).pushNamed(MainView.routeName);
+                },
+              ),
+              OutlinedButtonCustomWidget(
+                label: 'REGISTER',
                 margin: const EdgeInsets.only(top: 10),
-                height: 50,
-                decoration: const BoxDecoration(
-                    border: Border(bottom: BorderSide(color: Colors.white))),
-                child: const TextField(
-                  cursorColor: Colors.white,
-                  cursorHeight: 13,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      label: Text("Passoword"),
-                      labelStyle: TextStyle(fontSize: 13, color: Colors.white),
-                      icon: Icon(
-                        Icons.lock,
-                        color: Colors.white,
-                        size: 20,
-                      ),
-                      border: InputBorder.none),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 40),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(MainView.routeName);
-                  },
-                  child: const Text(
-                    "SIGN IN",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.orange,
-                      minimumSize: const Size(double.infinity, 40),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(2)))),
-                ),
-              ),
-              OutlinedButton(
                 onPressed: () {
                   Navigator.of(context).pushNamed(RegisterView.routeName);
                 },
-                child: const Text(
-                  "REGISTER",
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-                style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: Colors.white),
-                    minimumSize: const Size(double.infinity, 40),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(2)),
-                    )),
               ),
               Container(
-                margin: EdgeInsets.only(top: 30, bottom: 40),
+                margin: EdgeInsets.only(top: 20, bottom: 40),
                 child: TextButton(
                     onPressed: () {},
                     child: const Text(
@@ -141,7 +84,7 @@ class _LoginViewState extends State<LoginView> {
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w300,
-                          fontSize: 12),
+                          fontSize: 16),
                     )),
               )
             ],
